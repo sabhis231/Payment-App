@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -12,8 +15,12 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    
   ], 
-  exports:[MatIconModule,MatInputModule, MatButtonModule]
+  exports:[MatIconModule,MatInputModule, MatButtonModule,MatDatepickerModule,
+    MatNativeDateModule]
 })
 export class MaterialModule { }

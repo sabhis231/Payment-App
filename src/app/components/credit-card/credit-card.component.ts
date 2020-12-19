@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { formInputData, formButtonData } from '../../../assets/credit-card-input';
+import { CreditCard } from './models/credit-card.model';
+import { CreditCardSandbox } from './sandbox/credit-card.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditCardComponent implements OnInit {
 
-  constructor() { }
+   inputData=formInputData['input-field'];
+   buttonData=formButtonData['button-field'];
+   cardData: CreditCard = null;
+   amount:Number=-1;
+
+   creditCardForm:FormGroup;
+   minDate: Date;
+
+  constructor(private creditCardSandbox: CreditCardSandbox) { 
+    
+  } 
 
   ngOnInit(): void {
+    this.minDate = new Date();
+    this.creditCardSandbox.loadCard().subscribe((statedata)=>{
+      console.log(statedata)
+      this.amount=statedata.amount
+    })
+    this.creditCardForm=new FormGroup({
+      'cardHolderName': new FormControl(null, [Validators.required,Validators.pattern(/[a-zA-Z]{3}/)]),
+      'cardNumber': new FormControl(null, [Validators.required]),
+      'expiryDate': new FormControl(null, [Validators.required]),
+      'cvv': new FormControl(null, [Validators.required,Validators.minLength(3), Validators.maxLength(3)]),
+    });
+    
   }
+  onSubmitForm() {
+    this.cardData=this.creditCardForm.value;
+    this.cardData.amount=this.amount;
+    this.creditCardSandbox.onPayAmount(this.cardData);
+  } 
+  
 
 }

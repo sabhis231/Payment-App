@@ -13,6 +13,10 @@ import { CreditCardButtonComponent } from './components/credit-card/components/c
 import { appReducer } from './store/reducer/app.reducer';
 import { MaterialModule } from './material/material.module';
 import { LandingComponent } from './components/landing/landing.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreditcardEffects } from './components/credit-card/store/effects/credit-card-effects';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -27,10 +31,12 @@ import { LandingComponent } from './components/landing/landing.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CreditcardEffects]),
     BrowserAnimationsModule,
-    MaterialModule,
+    MaterialModule
     
   ],
   providers: [],

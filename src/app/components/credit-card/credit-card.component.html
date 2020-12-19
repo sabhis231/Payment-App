@@ -1,5 +1,56 @@
-<app-credit-card-input></app-credit-card-input>
+<form [formGroup]="creditCardForm" (ngSubmit)="onSubmitForm()">
+    <div class="col">
+        
+<div class="col mt-4 mb-2">
+    <mat-form-field class="big-form">
+        <mat-icon matPrefix>perm_identity</mat-icon>
+        <mat-label>Card Holder Name </mat-label>
+        <input type="text" matInput placeholder="Enter Your Name" formControlName="cardHolderName">
+        <mat-error *ngIf="!creditCardForm.get('cardHolderName').valid && creditCardForm.get('cardHolderName').touched">
+            Please enter card holder name 
+        </mat-error>
+      </mat-form-field>
+</div>
+<div class="col mt-4 mb-2" >
+    <mat-form-field class="big-form">
+        <mat-icon matPrefix>credit_card</mat-icon>
+        <mat-label>Card Number </mat-label>
+        <input type="text" matInput placeholder="Enter Card Number" formControlName="cardNumber">
+        <mat-error *ngIf="!creditCardForm.get('cardNumber').valid && creditCardForm.get('cardNumber').touched">
+            Please enter card number
+        </mat-error>
+    </mat-form-field>
+</div>
+<div class="col mt-4 mb-2">
+    <mat-form-field class="small-form">
+        <mat-icon matPrefix  (click)="picker.open()">date_range</mat-icon>
+        <mat-label>Expiry Date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDate">
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="!creditCardForm.get('expiryDate').valid && creditCardForm.get('expiryDate').touched">
+            Please enter expiry date greater than or equal to today date 
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="small-form margin-left-20">
+        <mat-icon matPrefix>lock</mat-icon>
+        <mat-label>CVV</mat-label>
+        <input type="text" matInput placeholder="CVV" formControlName="cvv">
+        <mat-error *ngIf="!creditCardForm.get('cvv').valid && creditCardForm.get('cvv').touched">
+            Please enter 3 letter CVV
+        </mat-error>
+    </mat-form-field>
+</div>
+</div>
 <div class="col">
     <h4 class="font-size-19">Payment:<span class="highlight font-weight-bolder"> $250</span></h4>
 </div>
-<app-credit-card-button></app-credit-card-button>
+<div class="col mt-4 mb-2">
+    <app-credit-card-button 
+        *ngFor="let data of buttonData" 
+        [colorData]="data.color" 
+        [titleData]="data.titleData" 
+        [typeData]="data.typeData"
+        [disabledData]="!creditCardForm.valid"
+    ></app-credit-card-button>
+</div>
+</form>
