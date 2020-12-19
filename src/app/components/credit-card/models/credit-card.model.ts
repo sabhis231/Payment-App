@@ -1,7 +1,7 @@
 export interface CreditCard {
     cardNumber : Number,
-    cardHolderName : String,
+    cardHolderName : string,
     expiryDate : Date,
-    cvv? : String,
+    cvv? : string,
     amount : Number
 }

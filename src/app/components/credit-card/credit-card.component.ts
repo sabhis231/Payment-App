@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { formInputData, formButtonData } from '../../../assets/credit-card-input';
 import { CreditCard } from './models/credit-card.model';
-import { CreditCardSandbox } from './sandbox/credit-card.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -10,6 +9,10 @@ import { CreditCardSandbox } from './sandbox/credit-card.service';
   styleUrls: ['./credit-card.component.scss']
 })
 export class CreditCardComponent implements OnInit {
+
+  @Input("creditData") creditData;
+  @Input("disabledData") disabledData;
+  @Output("sendPayment") sendPayment=new EventEmitter<CreditCard>();
 
    inputData=formInputData['input-field'];
    buttonData=formButtonData['button-field'];
@@ -19,16 +22,13 @@ export class CreditCardComponent implements OnInit {
    creditCardForm:FormGroup;
    minDate: Date;
 
-  constructor(private creditCardSandbox: CreditCardSandbox) { 
+  constructor() { 
     
   } 
 
   ngOnInit(): void {
+    this.amount=this.creditData["amount"];
     this.minDate = new Date();
-    this.creditCardSandbox.loadCard().subscribe((statedata)=>{
-      console.log(statedata)
-      this.amount=statedata.amount
-    })
     this.creditCardForm=new FormGroup({
       'cardHolderName': new FormControl(null, [Validators.required,Validators.pattern(/[a-zA-Z]{3}/)]),
       'cardNumber': new FormControl(null, [Validators.required]),
@@ -40,7 +40,7 @@ export class CreditCardComponent implements OnInit {
   onSubmitForm() {
     this.cardData=this.creditCardForm.value;
     this.cardData.amount=this.amount;
-    this.creditCardSandbox.onPayAmount(this.cardData);
+    this.sendPayment.emit(this.cardData)
   } 
   
 

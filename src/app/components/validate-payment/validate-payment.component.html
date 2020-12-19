@@ -1,0 +1,29 @@
+<mat-progress-bar mode="query" *ngIf="showLoader"></mat-progress-bar>
+<div class="row margin-top-9rem">
+    <div class="col-6 text-center">
+      <img src="../../../assets/credit-card.svg"/>
+    </div>
+    <div class="col-6 text-center mt-5pc">
+        <form [formGroup]="payAmount" (ngSubmit)="onPayButton()">
+        <div class="col mt-4 ">
+            <mat-form-field class="big-form">
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <mat-label>Amount to be pay</mat-label>
+                <input type="text" matInput placeholder="Enter Amount" formControlName="amount">
+                <mat-error *ngIf="!payAmount.get('amount').valid && payAmount.get('amount').touched">
+                    Please enter amount number
+                </mat-error>
+            </mat-form-field>
+            <h2>Need to Pay : <span class="highlight">$ {{payAmount.get('amount').value>0? payAmount.get('amount').value : '0'}}</span></h2>
+            <app-credit-card-button 
+                [colorData]="'primary'" 
+                [titleData]="'Proceed to Payment..'" 
+                [typeData]="'submit'"
+                [disabledData]="!payAmount.valid"
+            ></app-credit-card-button>
+        </div>
+    </form>
+      </div>
+  </div>
+
+  <app-snack-bar></app-snack-bar>

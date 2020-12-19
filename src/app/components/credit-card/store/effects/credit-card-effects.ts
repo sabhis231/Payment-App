@@ -17,7 +17,7 @@ export class CreditcardEffects {
             return this.creditCardService.payAmount(creditCardData.payload).pipe(
                 map((resData)=>{
                     if (resData) {
-                        return new fromCreditCardActions.PaymentDone(true);
+                        return new fromCreditCardActions.PaymentDone(resData['name']);
                       } else {
                         return new fromCreditCardActions.PaymentFailed(false);
                       }

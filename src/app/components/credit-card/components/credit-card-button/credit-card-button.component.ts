@@ -11,6 +11,7 @@ export class CreditCardButtonComponent implements OnInit {
   @Input("titleData") titleData;
   @Input("typeData") typeData;
   @Input("disabledData") disabledData;
+  @Input("paymentStart") paymentStart;
 
   constructor() { }
 

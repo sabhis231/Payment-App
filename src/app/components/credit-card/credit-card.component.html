@@ -42,7 +42,7 @@
 </div>
 </div>
 <div class="col">
-    <h4 class="font-size-19">Payment:<span class="highlight font-weight-bolder"> $250</span></h4>
+    <h4 class="font-size-19">Payment:<span class="highlight font-weight-bolder"> $ {{amount}}</span></h4>
 </div>
 <div class="col mt-4 mb-2">
     <app-credit-card-button 
@@ -51,6 +51,7 @@
         [titleData]="data.titleData" 
         [typeData]="data.typeData"
         [disabledData]="!creditCardForm.valid"
+        [paymentStart]="disabledData"
     ></app-credit-card-button>
 </div>
 </form>

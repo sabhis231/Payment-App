@@ -7,7 +7,7 @@ import { CreditCard } from '../models/credit-card.model';
 })
 export class CreditCardService {
 
- backendUrl="https://payment-app-a73b8-default-rtdb.firebaseio.com/paymentHistory"
+ backendUrl="https://payment-app-a73b8-default-rtdb.firebaseio.com/paymentHistory.json"
 
   constructor(private http:HttpClient) { }
 
