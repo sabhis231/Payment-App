@@ -11,6 +11,7 @@ import { CreditCardInputComponent } from './components/credit-card/components/cr
 import { CreditCardBlockComponent } from './components/credit-card/components/credit-card-block/credit-card-block.component';
 import { CreditCardButtonComponent } from './components/credit-card/components/credit-card-button/credit-card-button.component';
 import { appReducer } from './store/reducer/app.reducer';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { appReducer } from './store/reducer/app.reducer';
     AppRoutingModule,
     StoreModule.forRoot(appReducer),
     EffectsModule.forRoot([]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
