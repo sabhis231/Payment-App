@@ -8,8 +8,8 @@
         <div class="col mt-4 ">
             <mat-form-field class="big-form">
                 <mat-icon matPrefix>attach_money</mat-icon>
-                <mat-label>Amount to be pay</mat-label>
-                <input type="number" matInput placeholder="Enter Amount" formControlName="amount">
+                <mat-label>*Amount to be pay</mat-label>
+                <input type="number" matInput placeholder="*Enter Amount" formControlName="amount">
                 <mat-error *ngIf="!payAmount.get('amount').valid && payAmount.get('amount').touched">
                     Please enter valid amount
                 </mat-error>

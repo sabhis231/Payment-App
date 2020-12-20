@@ -4,8 +4,8 @@
 <div class="col mt-4 mb-2">
     <mat-form-field class="col-sm-7">
         <mat-icon matPrefix>perm_identity</mat-icon>
-        <mat-label>Card Holder Name </mat-label>
-        <input type="text" matInput placeholder="Enter Your Name" class="" formControlName="cardHolderName">
+        <mat-label>*Card Holder Name </mat-label>
+        <input type="text" matInput placeholder="*Enter Your Name" class="" formControlName="cardHolderName">
         <mat-error *ngIf="!creditCardForm.get('cardHolderName').valid && creditCardForm.get('cardHolderName').touched">
             Please enter card holder name 
         </mat-error>
@@ -14,8 +14,8 @@
 <div class="col mt-4 mb-2" >
     <mat-form-field class="col-sm-7">
         <mat-icon matPrefix>credit_card</mat-icon>
-        <mat-label>Card Number </mat-label>
-        <input type="text" matInput placeholder="Enter Card Number" formControlName="cardNumber">
+        <mat-label>*Card Number </mat-label>
+        <input type="text" matInput placeholder="*Enter Card Number" formControlName="cardNumber">
         <mat-error *ngIf="!creditCardForm.get('cardNumber').valid && creditCardForm.get('cardNumber').touched">
             Please enter card number
         </mat-error>
@@ -24,8 +24,8 @@
 <div class="col mt-4 mb-2">
     <mat-form-field class="col-sm-4">
         <mat-icon matPrefix  (click)="picker.open()">date_range</mat-icon>
-        <mat-label>Expiry Date</mat-label>
-        <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDate">
+        <mat-label>*Expiry Date (MM/DD/YYYY)</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="*MM/DD/YYYY" formControlName="expiryDate">
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="!creditCardForm.get('expiryDate').valid && creditCardForm.get('expiryDate').touched">
             Please enter expiry date greater than or equal to today date 
