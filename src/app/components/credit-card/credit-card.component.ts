@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { formInputData, formButtonData } from '../../../assets/credit-card-input';
+import {  formButtonData } from '../../../assets/credit-card-input';
 import { CreditCard } from './models/credit-card.model';
 
 @Component({
@@ -14,7 +14,6 @@ export class CreditCardComponent implements OnInit {
   @Input("disabledData") disabledData;
   @Output("sendPayment") sendPayment=new EventEmitter<CreditCard>();
 
-   inputData=formInputData['input-field'];
    buttonData=formButtonData['button-field'];
    cardData: CreditCard = null;
    amount:Number=0;

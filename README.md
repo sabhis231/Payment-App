@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Production server
 
-Copy of the application is deployed in Firebase.Click [Angular CLI](https://payment-app-a73b8.web.app) to use it.
+Copy of the application is deployed in Firebase.Click [Payment App Live Firebase URL](https://payment-app-a73b8.web.app) to use it.
 
 
 ## How to use it
