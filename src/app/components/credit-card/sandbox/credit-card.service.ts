@@ -15,6 +15,9 @@ export class CreditCardSandbox {
   loadCard() {
     return this.store.select('creditCard');
   }
+  resetData() {
+    this.store.dispatch(new fromCreditCardAction.ResetCard());
+  }
 
   loadAmountData() {
     return this.store.select('creditCard').pipe(

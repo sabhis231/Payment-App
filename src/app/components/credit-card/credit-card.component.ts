@@ -17,7 +17,7 @@ export class CreditCardComponent implements OnInit {
    inputData=formInputData['input-field'];
    buttonData=formButtonData['button-field'];
    cardData: CreditCard = null;
-   amount:Number=-1;
+   amount:Number=0;
 
    creditCardForm:FormGroup;
    minDate: Date;
@@ -30,10 +30,10 @@ export class CreditCardComponent implements OnInit {
     this.amount=this.creditData["amount"];
     this.minDate = new Date();
     this.creditCardForm=new FormGroup({
-      'cardHolderName': new FormControl(null, [Validators.required,Validators.pattern(/[a-zA-Z]{3}/)]),
+      'cardHolderName': new FormControl(null, [Validators.required,Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]),
       'cardNumber': new FormControl(null, [Validators.required]),
       'expiryDate': new FormControl(null, [Validators.required]),
-      'cvv': new FormControl(null, [Validators.required,Validators.minLength(3), Validators.maxLength(3)]),
+      'cvv': new FormControl(null, [Validators.minLength(3), Validators.maxLength(3), Validators.pattern('[0-9]{3}')]),
     });
     
   }

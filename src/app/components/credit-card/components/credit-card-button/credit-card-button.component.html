@@ -1,7 +1,8 @@
-<button  
-    mat-raised-button 
-    [color]="colorData" 
-    [type]="typeData" 
-    [disabled]="typeData !='reset' ? paymentStart ? true : disabledData : paymentStart "
-    [class]="typeData !='reset' ? '':'ml-3'"
->{{titleData}}</button>
+    <button  
+        mat-raised-button 
+        [color]="colorData" 
+        [type]="typeData" 
+        [disabled]="typeData !='reset' ? paymentStart ? true : disabledData : paymentStart "
+        [class]="typeData !='reset' ? '':'ml-sm-3 mt-3'"
+    >{{titleData}}
+    </button>

@@ -51,7 +51,7 @@ export const formButtonData = {
         },
         {
             "color": "warn",
-            "titleData": "DECLINE",
+            "titleData": "RESET",
             "typeData":"reset"
         }
     ]

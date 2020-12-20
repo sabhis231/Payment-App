@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -12,6 +12,8 @@ import {
 })
 export class SnackBarComponent implements OnInit {
 
+  @Input("data") data;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
@@ -19,7 +21,7 @@ export class SnackBarComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._snackBar.open('Welcome Back to Payment App', 'End now', {
+    this._snackBar.open(this.data, 'End now', {
       duration: 1000,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,

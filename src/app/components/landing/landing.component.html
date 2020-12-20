@@ -1,9 +1,11 @@
 <mat-progress-bar mode="query" *ngIf="showLoader"></mat-progress-bar>
 <div class="row margin-top-9rem">
-    <div class="col-6 text-center">
+    <div class="col-sm-6 text-center">
       <img src="../../../assets/credit-card.svg"/>
     </div>
-    <div class="col-6 text-center">
+    <div class="col-sm-6 text-center">
         <app-credit-card [creditData]="creditData" [disabledData]="disabled" (sendPayment)="onSendPayment($event)"></app-credit-card>
       </div>
   </div>
+
+  <app-snack-bar *ngIf="showLoader" [data]="'Thanks for Submission...'"></app-snack-bar>

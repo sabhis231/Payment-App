@@ -12,7 +12,7 @@ export interface State {
 }
 const initialState:State= {
     creditCardDetails:null,
-    amount:-1,
+    amount:0,
     paymentStatus: false,
     paymentReceipt:null,
     paymentInProcess: false,
@@ -24,6 +24,16 @@ export function creditCardReducer (state=initialState, action:fromCreditCardActi
     switch(action.type) {
         case fromCreditCardAction.LOAD_CARD:
             return state
+        case fromCreditCardAction.RESET_CARD:
+            return {
+                ...state,
+                creditCardDetails:null,
+                amount:0,
+                paymentStatus: false,
+                paymentReceipt:null,
+                paymentInProcess: false,
+                paymentError: false,
+            }
         case fromCreditCardAction.AMOUNT_SELECTED:
             return {
                 ...state, 
